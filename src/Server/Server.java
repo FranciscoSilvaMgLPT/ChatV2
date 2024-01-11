@@ -20,13 +20,23 @@ public class Server {
                 System.out.println(clientSocket + " connected!");
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-                String info = in.readLine();
-                if (authenticateLogin(info)) {
-                    System.out.println("asdasd");
-                } else {
-                    System.out.println("Login info (" + info + ") by " + clientSocket + " refused!");
-                    out.println("Login info refused ");
+                String[] info = in.readLine().split("\\|");
+
+                switch (info[0]){
+                    case "login":
+                        if (authenticateLogin(info[1],info[2])) {
+                            System.out.println("logged");
+
+                        } else {
+                            System.out.println("Login info (" + info + ") by " + clientSocket + " refused!");
+                            out.println("Login info refused ");
+                        }
+                        break;
+                    case "signup":
+
+                        break;
                 }
+
 
                 System.out.println(clientSocket + " disconnected!");
             }
@@ -35,8 +45,7 @@ public class Server {
         }
     }
 
-    private boolean authenticateLogin(String info) {
-        String[] log = info.split("\\|");
+    private boolean authenticateLogin(String username, String password) {
         if(info!=null){
             return false;
         }
