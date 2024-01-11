@@ -18,10 +18,13 @@ public class Client {
         this.password = password;
         this.chat = false;
        // username.charAt(0) == '#'?  this.admin = true:  this.admin = false;
-        this.admin = false;
-        if (username.charAt(0) == '#') {
-            this.admin = true;
-        }
+        this.admin = username.charAt(0) == '#';
+    }
+
+    public Client(String username, String password, Boolean admin) {
+        this.username = username;
+        this.password = password;
+        this.admin = admin;
     }
 
     public String getUsername() {
