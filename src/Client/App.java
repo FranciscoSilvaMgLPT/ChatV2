@@ -29,6 +29,7 @@ public class App {
                         break;
                     case 2:
                         userSocket = new Socket(LOCALHOST, PORT);
+                        signUp();
                         break;
                     case 0:
                         System.out.println("Goodbye!");
@@ -50,30 +51,41 @@ public class App {
         String password = sc.next();
         try {
             PrintWriter out = new PrintWriter(userSocket.getOutputStream(), true);
-            out.println(username + separator + password);
-
-
+            out.println("login" + separator + username + separator + password);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         return false;
     }
 
-
-        public void loggedMenu() {
-            do {
-                System.out.println("Hello " + username + "!\n1- Chat\n2- Who is online?\n0- Log out");
-                switch (sc.nextInt()) {
-                    case 1:
-
-                        break;
-                    case 2:
-
-                        break;
-                    case 0:
-                        System.out.println("Logging out! Bye " + username);
-                        username = null;
-                }
-            } while (username != null);
+    public void signUp(){
+        System.out.print("\nLOGIN\n\nUsername:");
+        username = sc.next();
+        System.out.print("\nPassword:");
+        String password = sc.next();
+        try {
+            PrintWriter out = new PrintWriter(userSocket.getOutputStream(), true);
+            out.println("signUp" + separator + username + separator + password);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
+
+
+    public void loggedMenu() {
+        do {
+            System.out.println("Hello " + username + "!\n1- Chat\n2- Who is online?\n0- Log out");
+            switch (sc.nextInt()) {
+                case 1:
+
+                    break;
+                case 2:
+
+                    break;
+                case 0:
+                    System.out.println("Logging out! Bye " + username);
+                    username = null;
+            }
+        } while (username != null);
+    }
+}
