@@ -22,17 +22,17 @@ public class Server {
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
                 String[] info = in.readLine().split("\\|");
 
-                switch (info[0]){
+                switch (info[0]) {
                     case "login":
-                        if (authenticateLogin(info[1],info[2])) {
-                            System.out.println("logged");
+                        if (authenticateLogin(info[1], info[2])) {
+                            System.out.println(info[1] + " logged.");
 
                         } else {
                             System.out.println("Login info (" + info + ") by " + clientSocket + " refused!");
                             out.println("Login info refused ");
                         }
                         break;
-                    case "signup":
+                    case "signUp":
 
                         break;
                 }
@@ -46,7 +46,7 @@ public class Server {
     }
 
     private boolean authenticateLogin(String username, String password) {
-        if(info!=null){
+        if (info != null) {
             return false;
         }
         return true;
