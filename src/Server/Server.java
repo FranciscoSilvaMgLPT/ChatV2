@@ -29,6 +29,7 @@ public class Server {
                             out.println("Login info refused ");
                         }
                         break;
+
                     case "signup":
                         fm.registerClient(infoSplit[1],infoSplit[2]);
                 }
@@ -38,5 +39,4 @@ public class Server {
             throw new RuntimeException(e);
         }
     }
-
 }
