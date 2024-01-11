@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class FileManager {
     List<Client> clientList;
-    private static final String FILE_PATH = "./Database/Clients.txt";
+    private static final String FILE_PATH = "/Users/mindera/IdeaProjects/Chat2/src/Server/Database/Clients.txt";
 
     public List<Client> getClientList() {
         return clientList;

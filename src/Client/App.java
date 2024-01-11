@@ -65,7 +65,7 @@ public class App {
         String password = sc.next();
         try {
             PrintWriter out = new PrintWriter(userSocket.getOutputStream(), true);
-            out.println("signUp" + separator + username + separator + password);
+            out.println("signup" + separator + username + separator + password);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

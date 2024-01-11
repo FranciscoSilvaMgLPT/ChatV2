@@ -10,7 +10,6 @@ public class Client {
     private String username;
     private String password;
     private Boolean admin;
-    private Boolean chat;
     private Socket userSocket;
     private BufferedReader reader;
     private PrintWriter writer;
@@ -18,7 +17,6 @@ public class Client {
     public Client(String username, String password, Socket userSocket) {
         this.username = username;
         this.password = password;
-
         this.admin = username.charAt(0) == '#';
         this.userSocket = userSocket;
         try {
@@ -27,6 +25,12 @@ public class Client {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public Client(String username, String password, Boolean admin) {
+        this.username = username;
+        this.password = password;
+        this.admin = admin;
     }
 
     public String getUsername() {
@@ -51,14 +55,6 @@ public class Client {
 
     public void setAdmin(Boolean admin) {
         this.admin = admin;
-    }
-
-    public Boolean getChat() {
-        return chat;
-    }
-
-    public void setChat(Boolean chat) {
-        this.chat = chat;
     }
 
     public Socket getUserSocket() {
