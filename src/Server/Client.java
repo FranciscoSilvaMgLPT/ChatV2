@@ -18,6 +18,7 @@ public class Client {
     public Client(String username, String password, Socket userSocket) {
         this.username = username;
         this.password = password;
+
         this.admin = username.charAt(0) == '#';
         this.userSocket = userSocket;
         try {
